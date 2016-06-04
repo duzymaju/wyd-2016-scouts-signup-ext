@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+}
+
+#volunteer-view,
+#volunteer-message,
+#credentials-form,
+#credentials-item {
+    display: none;
+}

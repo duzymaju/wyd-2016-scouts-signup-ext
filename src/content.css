@@ -1,0 +1,16 @@
+select[id="reg.title"].selectpicker,
+select#country,
+select#nationality,
+select#presetMotherLangCombo,
+select#commLangCombo,
+select#tshirtSize {
+    display: inline-block !important;
+}
+select[id="reg.title"].selectpicker + .bootstrap-select.form-control,
+select#country + .bootstrap-select.form-control,
+select#nationality + .bootstrap-select.form-control,
+select#presetMotherLangCombo + .bootstrap-select.form-control,
+select#commLangCombo + .bootstrap-select.form-control,
+select#tshirtSize + .bootstrap-select.form-control {
+    display: none !important;
+}

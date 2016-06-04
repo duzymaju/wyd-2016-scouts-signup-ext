@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Eclipse SvD extension - options</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div id="volunteer">
+        <div id="volunteer-form">
+            <label for="volunteer-id">ID wolontariusza</label> <input type="number" id="volunteer-id">
+            <input type="submit" id="volunteer-get" value="Pobierz dane">
+        </div>
+        <div id="volunteer-view">
+            <textarea id="volunteer-view-list" rows="15" cols="70"></textarea>
+            <input type="submit" id="volunteer-load" value="Wstaw dane">
+        </div>
+        <div id="volunteer-message"></div>
+    </div>
+    <div id="credentials">
+        <header>Uwierzytelnianie</header>
+        <div id="credentials-form">
+            <label for="credentials-user">użytkownik:</label> <input type="text" id="credentials-user">
+            <label for="credentials-api-token">token API:</label> <input type="password" id="credentials-api-token">
+            <button id="credentials-add">Zapisz</button>
+        </div>
+        <div id="credentials-item">
+            <p>Użytkownik: <span id="credentials-name"></span></p>
+            <button id="credentials-remove">Usuń</button>
+        </div>
+        <div id="credentials-loading">
+            trwa ładowanie
+        </div>
+    </div>
+
+    <script src="jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="popup.js" type="text/javascript"></script>
+</body>
+</html>

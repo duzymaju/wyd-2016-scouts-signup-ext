@@ -1,0 +1,38 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "name": "WYD ZHP extension",
+    "description": "Helps to import ZHP volunteers data into WYD registration form",
+    "author": "Wiktor Maj <wiktor.maj@zhp.net.pl>",
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "icon19.png",
+            "38": "icon38.png"
+        },
+        "default_title": "Tab",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "css": [
+                "content.css"
+            ],
+            "js": [
+                "jquery-2.2.4.min.js",
+                "content.js"
+            ],
+            "matches": [
+                "https://register.wyd.va/vol/wizard*"
+            ]
+        }
+    ],
+    "permissions": [
+        "https://register.wyd.va/vol/wizard*",
+        "storage"
+    ]
+}
