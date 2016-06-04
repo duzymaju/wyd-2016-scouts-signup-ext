@@ -2,6 +2,20 @@ body {
     margin: 0;
 }
 
+#page,
+#volunteer,
+#credentials {
+	padding: 5px;
+	width: 350px;
+}
+h3 {
+	margin: 5px;
+}
+#page button,
+#volunteer textarea {
+	width: 100%;
+}
+
 #volunteer-view,
 #volunteer-message,
 #credentials-form,

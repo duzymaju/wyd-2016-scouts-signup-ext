@@ -18,15 +18,16 @@ $(document).ready(function () {
         $('#mobilePhone').val(volunteer.phone);
         $('#email, #repeatEmail').val(volunteer.emailAlias);
         $('#community').checkElement();
-        $('#instTypeTxt3').val('Związek Harcerstwa Polskiego');
+        $('#instTypeTxt3').val(volunteer.associationName);
         $('#commLangCombo').selectElement(contactLang);
         $('#tshirtSize').selectElement(volunteer.shirtSize);
         $('#privacy').checkElement();
     });
 
-    $('#tshirtSize').find('option').each(function () {
-        $(this).attr('value', $(this).text());
-    });
+    $('#tshirtSize').find('option')
+        .each(function () {
+            $(this).attr('value', $(this).text());
+        });
 });
 
 $.fn.selectElement = function (value) {
@@ -36,7 +37,10 @@ $.fn.selectElement = function (value) {
 
 $.fn.checkElement = function () {
     $(this).closest('.form-group')
-        .find('.gmg-radio > span').removeClass('checked');
+        .find('.gmg-radio > span')
+        .removeClass('checked');
     $(this).prop('checked', true)
-        .parent().addClass('checked');
+        .parent()
+        .addClass('checked')
+        .trigger('click');
 };

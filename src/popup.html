@@ -6,19 +6,23 @@
     <link rel="stylesheet" href="popup.css">
 </head>
 <body>
+    <div id="page">
+        <button id="page-button">Otwórz formularz</button>
+    </div>
     <div id="volunteer">
+        <h3>Pobieranie danych</h3>
         <div id="volunteer-form">
             <label for="volunteer-id">ID wolontariusza</label> <input type="number" id="volunteer-id">
-            <input type="submit" id="volunteer-get" value="Pobierz dane">
+            <input type="submit" id="volunteer-get" value="Pobierz">
         </div>
         <div id="volunteer-view">
             <textarea id="volunteer-view-list" rows="15" cols="70"></textarea>
-            <input type="submit" id="volunteer-load" value="Wstaw dane">
+            <input type="submit" id="volunteer-load" value="Wstaw">
         </div>
         <div id="volunteer-message"></div>
     </div>
     <div id="credentials">
-        <header>Uwierzytelnianie</header>
+        <h3>Uwierzytelnianie</h3>
         <div id="credentials-form">
             <label for="credentials-user">użytkownik:</label> <input type="text" id="credentials-user">
             <label for="credentials-api-token">token API:</label> <input type="password" id="credentials-api-token">

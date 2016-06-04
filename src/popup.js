@@ -86,6 +86,17 @@ $(document).ready(function () {
         return self;
     })();
 
+    (function () {
+        var manifest = chrome.runtime.getManifest();
+        var pageUrl = manifest.content_scripts.pop().matches.pop().replace('*', '') + '?lang=pl';
+
+        $('#page-button').on('click', function () {
+            chrome.tabs.create({
+                url: pageUrl
+            });
+        });
+    })();
+
     (function (credentials) {
         var form = $('#volunteer-form');
         var view = $('#volunteer-view');
