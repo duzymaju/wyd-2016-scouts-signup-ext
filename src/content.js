@@ -36,11 +36,7 @@ $.fn.selectElement = function (value) {
 };
 
 $.fn.checkElement = function () {
-    $(this).closest('.form-group')
-        .find('.gmg-radio > span')
-        .removeClass('checked');
-    $(this).prop('checked', true)
-        .parent()
+    $(this).parent()
         .addClass('checked')
         .trigger('click');
 };
