@@ -17,11 +17,17 @@ $(document).ready(function () {
         $('#country, #nationality, #presetMotherLangCombo').selectElement(volunteer.country);
         $('#fiscalCode').valIfEmpty(volunteer.pesel);
         $('#familyName').valIfEmpty(volunteer.fatherName);
-        $('#mobilePhone').valIfEmpty(volunteer.phone);
+        $('#mobilePhone').setPhone($('#prefixMobilePhone'), volunteer.phone);
         $('#email, #repeatEmail').valIfEmpty(volunteer.emailAlias);
         $('#community').checkElement();
         $('#instTypeTxt3').valIfEmpty(volunteer.associationName);
         $('#commLangCombo').selectElement(contactLang);
+        $('#emerContactFirstname').valIfEmpty(volunteer.emergencyContactFirstName);
+        $('#emerContactLastname').valIfEmpty(volunteer.emergencyContactLastName);
+        $('#emerContactEmail').valIfEmpty(volunteer.emergencyContactEmail);
+        $('#emerContactRelationship').valIfEmpty(volunteer.emergencyContactRelationship);
+        $('#emerContactCountry').selectElement(volunteer.emergencyContactCountry);
+        $('#emerContactMobilephone').setPhone($('#emerContactPreMobilephone'), volunteer.emergencyContactPhone);
         $('#tshirtSize').selectElement(volunteer.shirtSize);
         $('#privacy').checkElement();
     });
@@ -43,6 +49,22 @@ $.fn.valIfEmpty = function (value) {
 $.fn.selectElement = function (value) {
     $(this).find('option[value="' + value + '"]')
         .prop('selected', true);
+};
+
+$.fn.setPhone = function (prefixSelect, phone) {
+    var phoneInput = $(this);
+    var phoneSet = false;
+    prefixSelect.find('option').each(function () {
+        var prefix = $(this).val();
+        if (prefix && prefix !== '' && phone.substr(0, prefix.length) === prefix) {
+            prefixSelect.selectElement(prefix);
+            phoneInput.valIfEmpty(phone.substr(prefix.length));
+            phoneSet = true;
+        }
+    });
+    if (!phoneSet) {
+        phoneInput.valIfEmpty(phone);
+    }
 };
 
 $.fn.checkElement = function () {

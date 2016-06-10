@@ -1,16 +1,22 @@
 select[id="reg.title"].selectpicker,
 select#country,
+select#prefixMobilePhone,
 select#nationality,
 select#presetMotherLangCombo,
 select#commLangCombo,
+select#emerContactCountry,
+select#emerContactPreMobilephone,
 select#tshirtSize {
     display: inline-block !important;
 }
 select[id="reg.title"].selectpicker + .bootstrap-select.form-control,
 select#country + .bootstrap-select.form-control,
+select#prefixMobilePhone + .bootstrap-select.form-control,
 select#nationality + .bootstrap-select.form-control,
 select#presetMotherLangCombo + .bootstrap-select.form-control,
 select#commLangCombo + .bootstrap-select.form-control,
+select#emerContactCountry + .bootstrap-select.form-control,
+select#emerContactPreMobilephone + .bootstrap-select.form-control,
 select#tshirtSize + .bootstrap-select.form-control {
     display: none !important;
 }

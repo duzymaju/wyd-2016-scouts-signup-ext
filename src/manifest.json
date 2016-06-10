@@ -1,5 +1,5 @@
 {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "manifest_version": 2,
     "name": "WYD ZHP extension",
     "description": "Helps to import ZHP volunteers data into WYD registration form",
