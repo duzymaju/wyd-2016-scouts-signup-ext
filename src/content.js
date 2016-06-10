@@ -8,17 +8,19 @@ $(document).ready(function () {
         var contactLang = volunteer.country === 'PL' || volunteer.country === 'ES' ? volunteer.country : 'EN';
 
         $('select[id="reg.title"]').selectElement(sexDescription);
-        $('#firstName').val(volunteer.firstName);
-        $('#lastName').val(volunteer.lastName);
+        $('#firstName').valIfEmpty(volunteer.firstName);
+        $('#lastName').valIfEmpty(volunteer.lastName);
         $('#sex_' + volunteer.sex).checkElement();
-        $('#birthDate').val(volunteer.birthDate);
-        $('#postalAddress').val(volunteer.address + regionAndDistrict);
-        $('#city').val(volunteer.address + regionAndDistrict);
+        $('#birthDate').valIfEmpty(volunteer.birthDate);
+        $('#postalAddress').valIfEmpty(volunteer.address + regionAndDistrict);
+        $('#city').valIfEmpty(volunteer.address + regionAndDistrict);
         $('#country, #nationality, #presetMotherLangCombo').selectElement(volunteer.country);
-        $('#mobilePhone').val(volunteer.phone);
-        $('#email, #repeatEmail').val(volunteer.emailAlias);
+        $('#fiscalCode').valIfEmpty(volunteer.pesel);
+        $('#familyName').valIfEmpty(volunteer.fatherName);
+        $('#mobilePhone').valIfEmpty(volunteer.phone);
+        $('#email, #repeatEmail').valIfEmpty(volunteer.emailAlias);
         $('#community').checkElement();
-        $('#instTypeTxt3').val(volunteer.associationName);
+        $('#instTypeTxt3').valIfEmpty(volunteer.associationName);
         $('#commLangCombo').selectElement(contactLang);
         $('#tshirtSize').selectElement(volunteer.shirtSize);
         $('#privacy').checkElement();
@@ -29,6 +31,14 @@ $(document).ready(function () {
             $(this).attr('value', $(this).text());
         });
 });
+
+$.fn.valIfEmpty = function (value) {
+    $(this).each(function () {
+        if ($(this).val() === '') {
+            $(this).val(value);
+        }
+    });
+};
 
 $.fn.selectElement = function (value) {
     $(this).find('option[value="' + value + '"]')
