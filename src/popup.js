@@ -87,8 +87,7 @@ $(document).ready(function () {
     })();
 
     (function () {
-        var manifest = chrome.runtime.getManifest();
-        var pageUrl = manifest.content_scripts.pop().matches.pop().replace('*', '') + '?lang=pl';
+        var pageUrl = 'https://register.wyd.va/vol/login?lang=pl';
 
         $('#page-button').on('click', function () {
             chrome.tabs.create({
