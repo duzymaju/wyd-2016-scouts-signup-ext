@@ -30,7 +30,7 @@ $(document).ready(function () {
             $('#emerContactCountry').selectElement(volunteer.emergencyContactCountry);
             $('#emerContactMobilephone').setPhone($('#emerContactPreMobilephone'), volunteer.emergencyContactPhone);
             $('#tshirtSize').selectElement(volunteer.shirtSize);
-            $('#privacy').checkElement(); 
+            $('#privacy').checkElement();
         }
     });
 
@@ -60,7 +60,7 @@ $.fn.setPhone = function (prefixSelect, phone) {
         var prefix = $(this).val();
         if (prefix && prefix !== '' && phone.substr(0, prefix.length) === prefix) {
             prefixSelect.selectElement(prefix);
-            phoneInput.valIfEmpty(phone.substr(prefix.length));
+            phoneInput.val(phone.substr(prefix.length));
             phoneSet = true;
         }
     });

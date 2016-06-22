@@ -101,9 +101,11 @@ $(document).ready(function () {
         var view = $('#volunteer-view');
         var message = $('#volunteer-message');
         var viewList = $('#volunteer-view-list');
+        var volunteerGetButton = $('#volunteer-get');
+        var volunteerLoadButton = $('#volunteer-load');
         var volunteer = null;
 
-        $('#volunteer-get').on('click', function () {
+        volunteerGetButton.on('click', function () {
             var volunteerId = parseInt(volunteerIdField.val(), 10);
 
             if (volunteerId > 0 && credentials.areLoaded()) {
@@ -126,6 +128,7 @@ $(document).ready(function () {
                         viewList.text(list.join("\r\n"));
                         message.hide();
                         view.show();
+                        volunteerLoadButton.focus();
                     },
                     error: function () {
                         volunteer = null;
@@ -135,13 +138,19 @@ $(document).ready(function () {
             }
         });
 
-        $('#volunteer-load').on('click', function () {
+        volunteerLoadButton.on('click', function () {
             if (volunteer) {
                 getActiveTabIfExists(function (tab) {
                     chrome.tabs.sendMessage(tab.id, {
                         volunteer: volunteer
                     });
                 });
+            }
+        });
+        
+        volunteerIdField.focus().keyup(function (event) {
+            if (event.keyCode === 13) {
+                volunteerGetButton.trigger('click');
             }
         });
     })(credentials);
