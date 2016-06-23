@@ -86,6 +86,36 @@ $(document).ready(function () {
         return self;
     })();
 
+    var lastId = (function () {
+        var namespace = 'lastId';
+        var storageType = 'local';
+
+        var setData = function (id, callback) {
+            var data = {};
+            data[namespace] = {
+                id: id
+            };
+            chrome.storage[storageType].set(data, callback);
+
+            return self;
+        };
+
+        var getData = function (callback) {
+            chrome.storage[storageType].get(namespace, function (data) {
+                callback(isset(data[namespace]) ? data[namespace].id : '');
+            });
+
+            return self;
+        };
+
+        var self = {
+            getData: getData,
+            setData: setData
+        };
+
+        return self;
+    })();
+
     (function () {
         var pageUrl = 'https://register.wyd.va/vol/login?lang=pl';
 
@@ -108,6 +138,7 @@ $(document).ready(function () {
         volunteerGetButton.on('click', function () {
             var volunteerId = parseInt(volunteerIdField.val(), 10);
 
+            lastId.setData(volunteerId);
             if (volunteerId > 0 && credentials.areLoaded()) {
                 view.hide();
                 message.text('trwa ładowanie').show();
@@ -147,11 +178,13 @@ $(document).ready(function () {
                 });
             }
         });
-        
-        volunteerIdField.focus().keyup(function (event) {
-            if (event.keyCode === 13) {
-                volunteerGetButton.trigger('click');
-            }
+
+        lastId.getData(function (id) {
+            volunteerIdField.val(id).focus().select().on('keyup', function (event) {
+                if (event.keyCode === 13) {
+                    volunteerGetButton.trigger('click');
+                }
+            });
         });
     })(credentials);
 

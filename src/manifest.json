@@ -1,5 +1,5 @@
 {
-    "version": "1.0.5",
+    "version": "1.1.0",
     "manifest_version": 2,
     "name": "WYD ZHP extension",
     "description": "Helps to import ZHP volunteers data into WYD registration form",
@@ -18,13 +18,34 @@
         "default_popup": "popup.html"
     },
     "content_scripts": [
+		{
+            "js": [
+                "jquery-2.2.4.min.js",
+                "content-draft.js"
+            ],
+            "matches": [
+                "https://register.wyd.va/vol/draft*",
+                "https://register.wyd.va/vol/reserv/main*"
+            ]
+		},
+		{
+            "js": [
+                "jquery-2.2.4.min.js",
+                "content-main.js",
+                "content-login.js"
+            ],
+            "matches": [
+                "https://register.wyd.va/vol/login*"
+            ]
+		},
         {
             "css": [
                 "content.css"
             ],
             "js": [
                 "jquery-2.2.4.min.js",
-                "content.js"
+                "content-main.js",
+                "content-wizard.js"
             ],
             "matches": [
                 "https://register.wyd.va/vol/wizard*"
@@ -32,7 +53,7 @@
         }
     ],
     "permissions": [
-        "https://register.wyd.va/vol/wizard*",
+        "https://register.wyd.va/vol*",
         "storage"
     ]
 }
