@@ -8,6 +8,13 @@ $(document).ready(function () {
                 = volunteer.region && volunteer.district ? ' [' + volunteer.region + ', ' + volunteer.district + ']' : '';
             var contactLang = volunteer.country === 'PL' || volunteer.country === 'ES' ? volunteer.country : 'EN';
 
+            $('#country, #nationality, #presetMotherLangCombo').selectElement(volunteer.country);
+            if ($('#country').val() === 'PL') {
+                $('.onlyPolish').removeClass('hidden');
+                $('#familyName').removeAttr('disabled');
+                $('#fiscalCode').removeAttr('disabled');
+            }
+
             $('select[id="reg.title"]').selectElement(sexDescription);
             $('#firstName').valIfEmpty(volunteer.firstName);
             $('#lastName').valIfEmpty(volunteer.lastName);
@@ -15,7 +22,6 @@ $(document).ready(function () {
             $('#birthDate').valIfEmpty(volunteer.birthDate);
             $('#postalAddress').valIfEmpty(volunteer.address + regionAndDistrict);
             $('#city').valIfEmpty(volunteer.address + regionAndDistrict);
-            $('#country, #nationality, #presetMotherLangCombo').selectElement(volunteer.country);
             $('#fiscalCode').valIfEmpty(volunteer.pesel);
             $('#familyName').valIfEmpty(volunteer.fatherName);
             $('#mobilePhone').setPhone($('#prefixMobilePhone'), volunteer.phone);

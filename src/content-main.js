@@ -9,6 +9,7 @@ $.fn.valIfEmpty = function (value) {
 $.fn.selectElement = function (value) {
     $(this).find('option[value="' + value + '"]')
         .prop('selected', true);
+    $(this).trigger('change');
 };
 
 $.fn.setPhone = function (prefixSelect, phone) {
