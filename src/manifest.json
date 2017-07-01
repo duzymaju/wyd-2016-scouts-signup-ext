@@ -1,8 +1,8 @@
 {
     "version": "1.1.1",
     "manifest_version": 2,
-    "name": "WYD ZHP extension",
-    "description": "Helps to import ZHP volunteers data into WYD registration form",
+    "name": "WYD 2016 signup scouts Chrome extension",
+    "description": "Helps to import ZHP volunteers data into WYD 2016 volunteer registration form",
     "author": "Wiktor Maj <wiktor.maj@zhp.net.pl>",
     "icons": {
         "16": "icon16.png",
